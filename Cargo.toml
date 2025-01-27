@@ -1,12 +1,12 @@
 [package]
-name = "argonian"
+name = "argonia"
 version = "1.0.0"
 authors = ["tropicbliss <tropicbliss@protonmail.com>"]
 edition = "2021"
 license = "MIT OR Apache-2.0"
 description = "A simple and opinionated password hashing library using argon2"
-homepage = "https://github.com/tropicbliss/argonian"
-repository = "https://github.com/tropicbliss/argonian"
+homepage = "https://github.com/tropicbliss/argonia"
+repository = "https://github.com/tropicbliss/argonia"
 readme = "README.md"
 
 [lib]

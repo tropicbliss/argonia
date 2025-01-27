@@ -1,4 +1,4 @@
-# argonian
+# @tropicbliss/argonia
 
 A lightweight password hashing library using Argon2, built with WebAssembly for environments without Node.js. Perfect for serverless platforms like Cloudflare Workers. This implementation matches [@node-rs/argon2](https://github.com/napi-rs/node-rs/tree/main/packages/argon2)'s output exactly.
 
@@ -15,15 +15,15 @@ A lightweight password hashing library using Argon2, built with WebAssembly for 
 ## Installation
 
 ```bash
-npm install argonian
+npm install @tropicbliss/argonia
 ```
 
 ## Usage
 
 ```js
-import { hash, verify } from 'argonian';
+import { hash, verify } from '@tropicbliss/argonia';
 
-const password = "argonian";
+const password = "argonia";
 
 try {
   // Hash a password
@@ -56,7 +56,7 @@ at your option.
 
 ### Contribution
 
-Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in argonian by you, as defined in the Apache-2.0 license, shall be dual licensed as above, without any additional terms or conditions.
+Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in argonia by you, as defined in the Apache-2.0 license, shall be dual licensed as above, without any additional terms or conditions.
 
 ## Acknowledgments
 

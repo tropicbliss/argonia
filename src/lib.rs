@@ -90,7 +90,7 @@ mod tests {
 
     #[test]
     fn hash_and_verify() {
-        let password = "argonian";
+        let password = "argonia";
         let hashed = hash(password).expect("Failed to hash password");
         let is_valid = verify(&hashed, password).expect("Unable to verify password");
         assert!(is_valid);

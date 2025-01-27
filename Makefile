@@ -5,17 +5,17 @@ PKG_DIR = pkg
 all: build modify-js
 
 build:
-	wasm-pack build --target bundler
+	wasm-pack build --scope tropicbliss --target bundler
 
 modify-js:
-	cat > $(PKG_DIR)/argonian.js << 'EOL'
-	import * as imports from "./argonian_bg.js";
-	import wkmod from "./argonian_bg.wasm";
+	cat > $(PKG_DIR)/argonia.js << 'EOL'
+	import * as imports from "./argonia_bg.js";
+	import wkmod from "./argonia_bg.wasm";
 	const instance = new WebAssembly.Instance(wkmod, {
-	  "./argonian_bg.js": imports,
+	  "./argonia_bg.js": imports,
 	});
 	imports.__wbg_set_wasm(instance.exports);
-	export * from "./argonian_bg.js";
+	export * from "./argonia_bg.js";
 	EOL
 
 publish:
