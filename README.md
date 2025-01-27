@@ -71,14 +71,6 @@ Verifies a password against a hash.
 
 This package uses Argon2, the winner of the Password Hashing Competition. The implementation uses secure default parameters that are suitable for most use cases.
 
-## Browser Support
-
-This package works in all modern browsers that support WebAssembly:
-- Chrome/Edge 57+
-- Firefox 52+
-- Safari 11+
-- Opera 44+
-
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
