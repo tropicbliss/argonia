@@ -37,36 +37,6 @@ try {
 }
 ```
 
-## API
-
-### hash(password: string): string
-
-Hashes a password using Argon2 with secure default parameters.
-
-**Parameters:**
-- `password`: The password string to hash
-
-**Returns:**
-- A string containing the hashed password
-
-**Throws:**
-- `Error` if hashing fails
-
-### verify(hash: string, password: string): boolean
-
-Verifies a password against a hash.
-
-**Parameters:**
-- `hash`: The hashed password string
-- `password`: The password to verify
-
-**Returns:**
-- `true` if the password matches the hash
-- `false` if the password does not match
-
-**Throws:**
-- `Error` if verification fails due to invalid hash format
-
 ## Security
 
 This package uses Argon2, the winner of the Password Hashing Competition. The implementation uses secure default parameters that are suitable for most use cases.
