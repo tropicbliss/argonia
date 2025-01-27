@@ -62,5 +62,5 @@ Unless you explicitly state otherwise, any contribution intentionally submitted 
 
 - [wasm-pack](https://github.com/rustwasm/wasm-pack) - The WebAssembly build tool that made this package possible
 - [wasm-bindgen](https://github.com/rustwasm/wasm-bindgen) - For making Rust and WebAssembly work together seamlessly
-- [rust-argon2](https://github.com/sru-systems/rust-argon2) - The Rust implementation of Argon2
+- [RustCrypto](https://github.com/RustCrypto/password-hashes/tree/master/argon2) - The Rust implementation of Argon2
 - [@node-rs/argon2](https://github.com/napi-rs/node-rs/tree/main/packages/argon2) - The reference implementation
