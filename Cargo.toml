@@ -3,6 +3,11 @@ name = "argonian"
 version = "0.1.0"
 authors = ["tropicbliss <tropicbliss@protonmail.com>"]
 edition = "2021"
+license = "MIT OR Apache-2.0"
+description = "A simple and opinionated password hashing library using argon2"
+homepage = "https://github.com/tropicbliss/argonian"
+repository = "https://github.com/tropicbliss/argonian"
+readme = "README.md"
 
 [lib]
 crate-type = ["cdylib", "rlib"]
