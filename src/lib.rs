@@ -7,6 +7,9 @@ use wasm_bindgen::prelude::*;
 
 /// Verifies a password against a hashed password string.
 ///
+/// # Note
+/// This function blocks the main thread. For better performance, execute it in a web worker instead.
+///
 /// # Arguments
 ///
 /// * `hashed` - A string containing the hashed password in PHC format
@@ -32,6 +35,9 @@ pub fn verify(hashed: &str, password: &str) -> Result<bool, JsError> {
 }
 
 /// Hashes a password using Argon2id with secure parameters.
+///
+/// # Note
+/// This function blocks the main thread. For better performance, execute it in a web worker instead.
 ///
 /// # Arguments
 ///
