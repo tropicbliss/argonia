@@ -18,7 +18,7 @@ modify-js:
 	export * from "./argonian_bg.js";
 	EOL
 
-deploy:
+publish:
 	cargo test
 	cd $(PKG_DIR) && npm publish --access=public
 
