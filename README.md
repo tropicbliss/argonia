@@ -2,6 +2,8 @@
 
 A simple and opinionated password hashing library using Argon2. Powered by WebAssembly and designed to be used in environments that do not support the Node-API. This package guarantees identical behavior with @node-rs/argon2.
 
+> **Note:** This package is specifically designed for and tested on Cloudflare Workers. It does not work in Node.js environments - for Node.js applications, it's recommended to use [@node-rs/argon2](https://github.com/napi-rs/node-rs/tree/main/packages/argon2) instead.
+
 ## Features
 
 - Secure password hashing using Argon2
