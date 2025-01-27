@@ -5,6 +5,22 @@ use argon2::{Algorithm, Argon2, Params, PasswordHash, PasswordHasher, Version};
 use rand_core::OsRng;
 use wasm_bindgen::prelude::*;
 
+/// Verifies a password against a hashed password string.
+///
+/// # Arguments
+///
+/// * `hashed` - A string containing the hashed password in PHC format
+/// * `password` - The plain text password to verify
+///
+/// # Returns
+///
+/// * Returns `true` if the password matches the hash, `false` if it doesn't match
+///
+/// # Errors
+///
+/// Returns an error if:
+/// * The hashed password string is not in valid PHC format
+/// * The hash parameters are invalid
 #[wasm_bindgen]
 pub fn verify(hashed: &str, password: &str) -> Result<bool, JsError> {
     utils::set_panic_hook();
@@ -15,6 +31,29 @@ pub fn verify(hashed: &str, password: &str) -> Result<bool, JsError> {
         .is_ok())
 }
 
+/// Hashes a password using Argon2id with secure parameters.
+///
+/// # Arguments
+///
+/// * `password` - The plain text password to hash
+///
+/// # Returns
+///
+/// * Returns the hashed password in PHC format
+///
+/// # Security
+///
+/// This function:
+/// * Uses Argon2id variant
+/// * Generates a cryptographically secure random salt
+/// * Uses a 32-byte output length
+/// * Uses system-recommended memory and time parameters
+///
+/// # Errors
+///
+/// Returns an error if:
+/// * Password hashing fails due to system resource constraints
+/// * The system fails to generate secure random values for the salt
 #[wasm_bindgen]
 pub fn hash(password: &str) -> Result<String, JsError> {
     utils::set_panic_hook();
