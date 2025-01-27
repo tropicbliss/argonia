@@ -5,7 +5,7 @@ PKG_DIR = pkg
 all: build modify-js
 
 build:
-	wasm-pack build --target bundler
+	wasm-pack build --scope tropicbliss --target bundler
 
 modify-js:
 	cat > $(PKG_DIR)/argonian.js << 'EOL'
