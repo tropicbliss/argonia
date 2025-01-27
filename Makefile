@@ -19,6 +19,7 @@ modify-js:
 	EOL
 
 deploy:
+	cargo test
 	cd $(PKG_DIR) && npm publish --access=public
 
 clean:
