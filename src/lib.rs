@@ -29,7 +29,7 @@ pub fn verify(hashed: &str, password: &str) -> Result<bool, JsError> {
     utils::set_panic_hook();
     let parsed_hash = PasswordHash::new(hashed)
         .map_err(|err| JsError::new(&format!("Invalid hashed password: {err}")))?;
-    Ok(argon_with_output_len(None)
+    Ok(argon_with_output_len()
         .verify_password(password.as_bytes(), &parsed_hash)
         .is_ok())
 }
@@ -64,24 +64,14 @@ pub fn verify(hashed: &str, password: &str) -> Result<bool, JsError> {
 pub fn hash(password: &str) -> Result<String, JsError> {
     utils::set_panic_hook();
     let salt = SaltString::generate(&mut OsRng);
-    Ok(argon_with_output_len(Some(32))
+    Ok(argon_with_output_len()
         .hash_password(password.as_bytes(), &salt)
         .map_err(|err| JsError::new(&err.to_string()))?
         .to_string())
 }
 
-fn argon_with_output_len(output_len: Option<usize>) -> Argon2<'static> {
-    Argon2::new(
-        Algorithm::Argon2id,
-        Version::V0x13,
-        Params::new(
-            Params::DEFAULT_M_COST,
-            Params::DEFAULT_T_COST,
-            Params::DEFAULT_P_COST,
-            output_len,
-        )
-        .unwrap(),
-    )
+fn argon_with_output_len() -> Argon2<'static> {
+    Argon2::new(Algorithm::Argon2id, Version::V0x13, Params::default())
 }
 
 #[cfg(test)]
