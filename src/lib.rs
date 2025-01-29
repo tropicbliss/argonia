@@ -1,7 +1,7 @@
 mod utils;
 
 use argon2::{password_hash::SaltString, PasswordVerifier};
-use argon2::{Algorithm, Argon2, Params, PasswordHash, PasswordHasher, Version};
+use argon2::{Argon2, PasswordHash, PasswordHasher};
 use rand_core::OsRng;
 use wasm_bindgen::prelude::*;
 
@@ -29,7 +29,7 @@ pub fn verify(hashed: &str, password: &str) -> Result<bool, JsError> {
     utils::set_panic_hook();
     let parsed_hash = PasswordHash::new(hashed)
         .map_err(|err| JsError::new(&format!("Invalid hashed password: {err}")))?;
-    Ok(argon_with_output_len()
+    Ok(Argon2::default()
         .verify_password(password.as_bytes(), &parsed_hash)
         .is_ok())
 }
@@ -64,14 +64,10 @@ pub fn verify(hashed: &str, password: &str) -> Result<bool, JsError> {
 pub fn hash(password: &str) -> Result<String, JsError> {
     utils::set_panic_hook();
     let salt = SaltString::generate(&mut OsRng);
-    Ok(argon_with_output_len()
+    Ok(Argon2::default()
         .hash_password(password.as_bytes(), &salt)
         .map_err(|err| JsError::new(&err.to_string()))?
         .to_string())
-}
-
-fn argon_with_output_len() -> Argon2<'static> {
-    Argon2::new(Algorithm::Argon2id, Version::V0x13, Params::default())
 }
 
 #[cfg(test)]
