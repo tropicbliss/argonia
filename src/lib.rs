@@ -5,6 +5,11 @@ use argon2::{Argon2, PasswordHash, PasswordHasher};
 use rand_core::OsRng;
 use wasm_bindgen::prelude::*;
 
+#[wasm_bindgen(start)]
+fn main_js() {
+    utils::set_panic_hook();
+}
+
 /// Verifies a password against a hashed password string.
 ///
 /// # Note
@@ -26,7 +31,6 @@ use wasm_bindgen::prelude::*;
 /// * The hash parameters are invalid
 #[wasm_bindgen]
 pub fn verify(hashed: &str, password: &str) -> Result<bool, JsError> {
-    utils::set_panic_hook();
     let parsed_hash = PasswordHash::new(hashed)
         .map_err(|err| JsError::new(&format!("Invalid hashed password: {err}")))?;
     Ok(Argon2::default()
@@ -62,7 +66,6 @@ pub fn verify(hashed: &str, password: &str) -> Result<bool, JsError> {
 /// * The system fails to generate secure random values for the salt
 #[wasm_bindgen]
 pub fn hash(password: &str) -> Result<String, JsError> {
-    utils::set_panic_hook();
     let salt = SaltString::generate(&mut OsRng);
     Ok(Argon2::default()
         .hash_password(password.as_bytes(), &salt)
