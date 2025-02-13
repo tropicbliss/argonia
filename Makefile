@@ -12,3 +12,6 @@ publish:
 
 clean:
 	rm -rf $(PKG_DIR)
+
+auth:
+	wasm-pack login
